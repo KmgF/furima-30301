@@ -13,7 +13,7 @@ first_name_kana | string | NOT NULL
 family_name_kana | string | NOT NULL
 birthday    | date   | NOT NULL
 
-# Association
+### Association
 - has_many :products
 
 
@@ -32,7 +32,7 @@ delivery_fee        | integer | NOT NULL
 user_id             | references   |
 image               |ActiveStorageで実装
 
-# Association
+### Association
 - belongs_to :user
 - has_one :buyer
 
@@ -42,7 +42,7 @@ Column     | Type | Option
 credit_card_id  | integer | NOT NULL
 adress_id  | integer | NOT NULL
 
-# Association
+### Association
 - belongs_to :products
 - has_one :credit_card
 - has_one :adress
@@ -54,7 +54,7 @@ card_number | integer | NOT NULL
 expiration_date | date | NOT NULL
 seurity_number | integer | NOT NULL
 
- # Association
+ ### Association
 - belongs_to :buyer
 
 ## adressテーブル
@@ -66,5 +66,5 @@ city        | string  | NOT NULL
 street_adress | string | NOT NULL
 tel         | integer | NOT NULL
 
-# Association
+### Association
  - belongs_to :buyer

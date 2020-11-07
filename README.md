@@ -1,24 +1,70 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# データベース設計
+ ## userテーブル
+Colomn      |Type    | Option
+-----------------------------
+nickname   | string | NOT NULL
+email       | string | NOT NULL
+password    | string | NOT NULL
+first_name  | string | NOT NULL
+family_name | string | NOT NULL
+first_name_kana | string | NOT NULL
+family_name_kana | string | NOT NULL
+birthday    | date   | NOT NULL
 
-Things you may want to cover:
+# Association
+- has_many :products
 
-* Ruby version
 
-* System dependencies
+## products テーブル
 
-* Configuration
+Column              | Type | Option
+------------------------------
+name                | string | NOT NULL
+message             | string | NOT NULL
+price               | integer | NOT NULL
+category            | string | NOT NULL
+status              | string | NOT NULL
+shipment_prefecture | string | NOT NULL
+date_of_shipment    | string | NOT NULL
+delivery_fee        | integer | NOT NULL
+user_id             | references   |
+image               |ActiveStorageで実装
 
-* Database creation
+# Association
+- belongs_to :user
+- has_one :buyer
 
-* Database initialization
+## buyer テーブル
+Column     | Type | Option
+-------------------------------
+credit_card_id  | integer | NOT NULL
+adress_id  | integer | NOT NULL
 
-* How to run the test suite
+# Association
+- belongs_to :products
+- has_one :credit_card
+- has_one :adress
 
-* Services (job queues, cache servers, search engines, etc.)
+## credit テーブル
+Column      | Type  | Option
+-------------------------------------
+card_number | integer | NOT NULL
+expiration_date | date | NOT NULL
+seurity_number | integer | NOT NULL
 
-* Deployment instructions
+ # Association
+- belongs_to :buyer
 
-* ...
+## adressテーブル
+Column   | Type | Opion
+---------------------------------------
+post-number | integer | NOT NULL
+prefecture  | string  | NOT NULL
+city        | string  | NOT NULL
+street_adress | string | NOT NULL
+tel         | integer | NOT NULL
+
+# Association
+ - belongs_to :buyer

@@ -43,12 +43,10 @@ product_id  | integer | null: false , foreign_key: true
 address_id  | integer | null: false
 
 ### Association
+- belongs_to :user
 - belongs_to :product
 - has_one :address
 
-
- ### Association
-- belongs_to :buyer
 
 ## addressesテーブル
 Column         | Type    | Opion

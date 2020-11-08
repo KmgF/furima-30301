@@ -29,7 +29,7 @@ status_id              | integer | null: false ,foreign_key: true
 shipment_prefecture_id | integer | null: false ,foreign_key: true
 date_of_shipment_id    | integer | null: false ,foreign_key: true
 delivery_fee_id        | integer | null: false ,foreign_key: true
-user                    | references| 
+user_id                | integer | null: false ,foreign_key: true 
 
 ### Association
 - belongs_to :user

@@ -1,12 +1,12 @@
 # README
 
 # データベース設計
- ## userテーブル
+ ## usersテーブル
 Colomn      |Type    | Option
 -----------------------------
 nickname   | string | NOT NULL
 email       | string | NOT NULL
-password    | string | NOT NULL
+encrypted_password    | string | NOT NULL
 first_name  | string | NOT NULL
 family_name | string | NOT NULL
 first_name_kana | string | NOT NULL
@@ -22,49 +22,44 @@ birthday    | date   | NOT NULL
 Column              | Type | Option
 ------------------------------
 name                | string | NOT NULL
-message             | string | NOT NULL
+message             | text | NOT NULL
 price               | integer | NOT NULL
-category            | string | NOT NULL
-status              | string | NOT NULL
-shipment_prefecture | string | NOT NULL
-date_of_shipment    | string | NOT NULL
-delivery_fee        | integer | NOT NULL
-user_id             | references   |
-image               |ActiveStorageで実装
+category_id            | integer | NOT NULL
+status_id              | integer | NOT NULL
+shipment_prefecture_id | integer | NOT NULL
+date_of_shipment_id    | integer | NOT NULL
+delivery_fee_id        | integer | NOT NULL
+user                | references|
 
 ### Association
 - belongs_to :user
 - has_one :buyer
 
-## buyer テーブル
+## buyers テーブル
 Column     | Type | Option
 -------------------------------
-credit_card_id  | integer | NOT NULL
-adress_id  | integer | NOT NULL
+user_id | integer | NOT NULL , foreign_key: true
+product_id | integer | NOT NULL , foreign_key: true
+address_id  | integer | NOT NULL,  foreign_key: true
 
 ### Association
-- belongs_to :products
-- has_one :credit_card
-- has_one :adress
+- belongs_to :product
+- has_one :address
 
-## credit テーブル
-Column      | Type  | Option
--------------------------------------
-card_number | integer | NOT NULL
-expiration_date | date | NOT NULL
-seurity_number | integer | NOT NULL
 
  ### Association
 - belongs_to :buyer
 
-## adressテーブル
+## addressesテーブル
 Column   | Type | Opion
 ---------------------------------------
-post-number | integer | NOT NULL
-prefecture  | string  | NOT NULL
+post_number | string | NOT NULL
+prefecture_id  | integer  | NOT NULL
 city        | string  | NOT NULL
-street_adress | string | NOT NULL
-tel         | integer | NOT NULL
+postal_code | string | NOT NULL
+building_name   | string |
+
+tel         | string | NOT NULL
 
 ### Association
  - belongs_to :buyer

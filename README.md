@@ -57,6 +57,7 @@ city           | string  | null: false
 postal_code    | string  | null: false
 building_name  | string  |
 tel            | string | null: false
+buyer_id       | integer | null:false ,foreign_key: true
 
 ### Association
  - belongs_to :buyer

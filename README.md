@@ -21,15 +21,15 @@
 
 Column              | Type | Option
 --------------------|------|--------------
-name                   | string  | NOT NULL
-message                |  text   | NOT NULL
-price                  | integer | NOT NULL
-category_id            | integer | NOT NULL
-status_id              | integer | NOT NULL
-shipment_prefecture_id | integer | NOT NULL
-date_of_shipment_id    | integer | NOT NULL
-delivery_fee_id        | integer | NOT NULL
-user                   | references|
+name                   | string  | null: false
+message                |  text   | null: false
+price                  | integer | null: false
+category_id            | integer | null: false ,foreign_key: true
+status_id              | integer | null: false ,foreign_key: true
+shipment_prefecture_id | integer | null: false ,foreign_key: true
+date_of_shipment_id    | integer | null: false ,foreign_key: true
+delivery_fee_id        | integer | null: false ,foreign_key: true
+user                    | references| 
 
 ### Association
 - belongs_to :user
@@ -38,9 +38,9 @@ user                   | references|
 ## buyers テーブル
 Column      | Type    | Option
 ------------|---------|------------------------------
-user_id     | integer | NOT NULL , foreign_key: true
-product_id  | integer | NOT NULL , foreign_key: true
-address_id  | integer | NOT NULL,  foreign_key: true
+user_id     | integer | null: false , foreign_key: true
+product_id  | integer | null: false , foreign_key: true
+address_id  | integer | null: false,  foreign_key: true
 
 ### Association
 - belongs_to :product
@@ -53,13 +53,12 @@ address_id  | integer | NOT NULL,  foreign_key: true
 ## addressesテーブル
 Column         | Type    | Opion
 ---------------|---------|---------------
-post_number    | string  | NOT NULL
-prefecture_id  | integer | NOT NULL
-city           | string  | NOT NULL
-postal_code    | string  | NOT NULL
+post_number    | string  | null: false
+prefecture_id  | integer | null: false
+city           | string  | null: false
+postal_code    | string  | null: false
 building_name  | string  |
-
-tel         | string | NOT NULL
+tel            | string | null: false
 
 ### Association
  - belongs_to :buyer

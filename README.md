@@ -22,7 +22,7 @@
 Column              | Type | Option
 --------------------|------|--------------
 name                   | string  | null: false
-message                |  text   | null: false
+description            |  text   | null: false
 price                  | integer | null: false
 category_id            | integer | null: false ,foreign_key: true
 status_id              | integer | null: false ,foreign_key: true

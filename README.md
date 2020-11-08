@@ -3,7 +3,7 @@
 # データベース設計
  ## usersテーブル
 | Colomn                 |Type    | Option |
-----------------------------------------------
+-------------------------|--------|-------------
 |nickname               | string | NOT NULL |
 |email                  | string | NOT NULL |
 |encrypted_password    | string | NOT NULL  |
@@ -20,7 +20,7 @@
 ## products テーブル
 
 Column              | Type | Option
-------------------------------
+--------------------|------|--------------
 name                   | string  | NOT NULL
 message                |  text   | NOT NULL
 price                  | integer | NOT NULL
@@ -37,7 +37,7 @@ user                   | references|
 
 ## buyers テーブル
 Column      | Type    | Option
--------------------------------
+------------|---------|------------------------------
 user_id     | integer | NOT NULL , foreign_key: true
 product_id  | integer | NOT NULL , foreign_key: true
 address_id  | integer | NOT NULL,  foreign_key: true
@@ -52,7 +52,7 @@ address_id  | integer | NOT NULL,  foreign_key: true
 
 ## addressesテーブル
 Column         | Type    | Opion
----------------------------------------
+---------------|---------|---------------
 post_number    | string  | NOT NULL
 prefecture_id  | integer | NOT NULL
 city           | string  | NOT NULL

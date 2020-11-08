@@ -2,16 +2,16 @@
 
 # データベース設計
  ## usersテーブル
-Colomn                 |Type    | Option
------------------------------
-nickname               | string | NOT NULL
-email                  | string | NOT NULL
-encrypted_password    | string | NOT NULL
-first_name            | string | NOT NULL
-family_name           | string | NOT NULL
-first_name_kana        | string | NOT NULL
-family_name_kana       | string | NOT NULL
-birthday                | date   | NOT NULL
+| Colomn                 |Type    | Option |
+----------------------------------------------
+|nickname               | string | NOT NULL |
+|email                  | string | NOT NULL |
+|encrypted_password    | string | NOT NULL  |
+|first_name            | string | NOT NULL  |
+|family_name           | string | NOT NULL  |
+|first_name_kana        | string | NOT NULL |
+|family_name_kana       | string | NOT NULL |
+|birthday                | date   | NOT NULL|
 
 ### Association
 - has_many :products

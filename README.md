@@ -25,11 +25,11 @@ Column              | Type | Option
 name                   | string  | null: false
 description            |  text   | null: false
 price                  | integer | null: false
-category_id            | integer | null: false ,foreign_key: true
-status_id              | integer | null: false ,foreign_key: true
-shipment_prefecture_id | integer | null: false ,foreign_key: true
-date_of_shipment_id    | integer | null: false ,foreign_key: true
-delivery_fee_id        | integer | null: false ,foreign_key: true
+category_id            | integer | null: false
+status_id              | integer | null: false
+shipment_prefecture_id | integer | null: false
+date_of_shipment_id    | integer | null: false
+delivery_fee_id        | integer | null: false
 user_id                | integer | null: false ,foreign_key: true 
 
 ### Association

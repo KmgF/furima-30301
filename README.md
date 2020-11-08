@@ -40,7 +40,7 @@ Column      | Type    | Option
 ------------|---------|------------------------------
 user_id     | integer | null: false , foreign_key: true
 product_id  | integer | null: false , foreign_key: true
-address_id  | integer | null: false,  foreign_key: true
+address_id  | integer | null: false
 
 ### Association
 - belongs_to :product

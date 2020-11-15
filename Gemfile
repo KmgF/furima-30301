@@ -63,3 +63,4 @@ end
 
 gem 'devise'
 gem 'faker'
+gem 'pry-rails'

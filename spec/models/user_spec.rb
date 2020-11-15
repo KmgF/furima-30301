@@ -65,29 +65,33 @@ describe'ユーザー新規登録' do
     end
 
     it 'passwordは数字だけだと登録できない' do
-      @use.password = "123456"
-      @use.password_confirmation = "123456"
+      @user.password = "123456"
+      @user.password_confirmation = "123456"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password 半角英字、数字を両方使用してください")
+      expect(@user.errors.full_messages).to include("Password is invalid")
     end
+
     it'passwordは英字だけだと登録できない'do
-    @use.password = "abcdefg"
-    @use.password_confirmation = "abcdefg"
+    @user.password = "abcdefg"
+    @user.password_confirmation = "abcdefg"
     @user.valid?
-    expect(@user.errors.full_messages).to include("Password 半角英字、数字を両方使用してください")
+    expect(@user.errors.full_messages).to include("Password is invalid")
     end
+
     it'passwordとpassword_confirmationは一致していないと登録できない'do
-    @user.password = "123456"
-    @user.password_confirmation= "234567"
+    @user.password = "123abc"
+    @user.password_confirmation= "234bcd"
     @user.valid?
     expect(@user.errors.messages).to include(:password_confirmation => ["doesn't match Password"])
     end
+
     it 'passwordが存在しても、password_confitmationは空だと登録できない' do
     @user.password = Faker::Internet.password(min_length:6)
     @user.password_confirmation = ""
     @user.valid?
     expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
+
     it 'first_nameは空だと登録できない' do
       @user.first_name=""
       @user.valid?

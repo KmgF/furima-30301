@@ -66,11 +66,13 @@ describe'ユーザー新規登録' do
 
     it 'passwordは数字だけだと登録できない' do
       @use.password = "123456"
+      @use.password_confirmation = "123456"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password 半角英字、数字を両方使用してください")
     end
     it'passwordは英字だけだと登録できない'do
     @use.password = "abcdefg"
+    @use.password_confirmation = "abcdefg"
     @user.valid?
     expect(@user.errors.full_messages).to include("Password 半角英字、数字を両方使用してください")
     end

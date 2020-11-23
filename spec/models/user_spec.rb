@@ -14,7 +14,8 @@ describe User do
         expect(@user).to be_valid
       end
       it 'passwordは6文字以上で登録できる' do
-        @user.password = Faker::Internet.password(min_length: 6, max_length: 6)
+        @user.password = '123abc'
+        # @user.password = Faker::Internet.password(min_length: 6, max_length: 6,mix_case: true)
         @user.password_confirmation = @user.password
         expect(@user).to be_valid
       end

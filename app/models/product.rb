@@ -11,4 +11,6 @@ class Product < ApplicationRecord
     validates :user_id
   end
 
+  belongs_to :user
+
 end

@@ -24,5 +24,5 @@ class User < ApplicationRecord
       validates :family_name_kana
     end
   
-
+has_many :products
 end

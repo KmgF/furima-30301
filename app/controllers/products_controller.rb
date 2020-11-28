@@ -5,6 +5,11 @@ class ProductsController < ApplicationController
   def new
   end
 
-  def create
+  def create(product_params)
+  end
+
+  private
+  def product_params
+    params.require(:product).permit(:image).merge(user_id: current_user.id)
   end
 end

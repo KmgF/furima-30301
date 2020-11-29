@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
   end
 
   def create(product_params)
-  
   end
 
   private

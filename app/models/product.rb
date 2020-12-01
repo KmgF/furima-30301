@@ -14,29 +14,24 @@ class Product < ApplicationRecord
   validates :price  ,format: {with: /\A[0-9]+\z/,message:'半角数字のみ使用できます'}
   validates :price  ,numericality:{greater_than_or_equal_to: 300 ,message:'値段は最低300円以上に設定してください。'}
   validates :price  ,numericality:{less_than_or_equal_to: 9999999 ,message:'9999999円以上は設定できません'}
-    
+  
+  with_options numericality:{other_than:1} do
+    validates :category_id
+    validates :status_id
+    validates :shipment_prefecture_id
+    validates :date_of_shipment_id
+    validates :delivery_fee_id
+  end
 
 
   belongs_to :user
   has_one_attached :image
-  
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :category
-  validates :category_id ,numericality:{other_than:1}
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :status
-  validates :status_id ,numericality:{other_than:1}
+  belongs_to :category
+  belongs_to :status
+  belongs_to :shipment_prefecture
+  belongs_to :date_of_shipment
+  belongs_to :delivery_fee
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :shipment_prefecture
-  validates :shipment_prefecture_id ,numericality:{other_than:1}
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :date_of_shipment
-  validates :date_of_shipment_id ,numericality:{other_than:1}
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :delivery_fee
-    validates :delivery_fee_id ,numericality: {other_than:1}
 end

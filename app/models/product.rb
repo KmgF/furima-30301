@@ -32,7 +32,7 @@ class Product < ApplicationRecord
     belongs_to :shipment_prefecture
   validates :shipment_prefecture_id ,numericality:{other_than:1}
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :date_of_shipment
-  validates :date_of_shipment_id ,numericality:{other_than:1}
+  # extend ActiveHash::Associations::ActiveRecordExtensions
+  #   belongs_to :date_of_shipment
+  # validates :date_of_shipment_id ,numericality:{other_than:1}
 end

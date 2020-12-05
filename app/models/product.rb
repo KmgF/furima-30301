@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   validates :price  ,numericality:{greater_than_or_equal_to: 300 ,message:'値段は最低300円以上に設定してください。'}
   validates :price  ,numericality:{less_than_or_equal_to: 9999999 ,message:'9999999円以上は設定できません'}
   
-  with_options numericality:{other_than:1} do
+  with_options numericality:{other_than:1,message:'選択してください'} do
     validates :category_id
     validates :status_id
     validates :shipment_prefecture_id

@@ -23,6 +23,8 @@ class Product < ApplicationRecord
     validates :delivery_fee_id
   end
 
+  validate :presence_image
+
 
   belongs_to :user
   has_one_attached :image
@@ -33,5 +35,13 @@ class Product < ApplicationRecord
   belongs_to :shipment_prefecture
   belongs_to :date_of_shipment
   belongs_to :delivery_fee
+
+private
+
+def presence_image
+  if image.attached? == false
+    errors.add(:image, '画像を添付してください')
+  end
+end
 
 end

@@ -28,12 +28,12 @@ RSpec.describe '商品の出品', type: :system do
       select '1~2日で発送', from: 'item-scheduled-delivery'
       fill_in 'item-price', with: @product.price
       # 販売手数料が表示されている
-      fee = @product.price * 0.1.round
+      fee = @product.price * 0.1.floor
       expect(page).to have_content fee
       # 販売利益が表示されている
       fee = @product.price * 0.1
       benefit = @product.price - fee
-      expect(page).to have_content benefit.round
+      expect(page).to have_content benefit.floor
       # 送信するとProductモデルのカウントが１上がる
       expect do
         find('input[name="commit"]').click

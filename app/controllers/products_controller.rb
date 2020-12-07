@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user! ,expect: [:index]
+  before_action :authenticate_user!, expect: [:index]
   def index
   end
 
   def new
-  @product = Product.new
+    @product = Product.new
   end
 
   def create
@@ -17,8 +17,8 @@ class ProductsController < ApplicationController
   end
 
   private
-  def product_params
-    params.require(:product).permit(:name,:description,:category_id,:status_id,:delivery_fee_id,:shipment_prefecture_id,:date_of_shipment_id,:price,:image).merge(user_id: current_user.id)
-  end
 
+  def product_params
+    params.require(:product).permit(:name, :description, :category_id, :status_id, :delivery_fee_id, :shipment_prefecture_id, :date_of_shipment_id, :price, :image).merge(user_id: current_user.id)
+  end
 end

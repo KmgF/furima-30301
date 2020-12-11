@@ -1,15 +1,15 @@
 FactoryBot.define do
   factory :product do
-    name                    { Faker::Games::Zelda.item }
-    description             { Faker::Lorem.sentence }
-    price                   { Faker::Number.between(from: 300, to: 9_999_999) }
+    name                    { 'モンスターボール'}
+    description             { 'ポケモンを気軽にゲットし、連れ歩ける大発明！' }
+    price                   { '1000000' }
+    category_id             {4}
+    status_id               {2}
+    shipment_prefecture_id  {2}
+    date_of_shipment_id     {2}
+    delivery_fee_id         {2}
 
     association :user
-    association :category
-    association :status
-    association :shipment_prefecture
-    association :date_of_shipment
-    association :delivery_fee
 
     after(:build) do |product|
       product.image.attach(io: File.open('public/images/zel3.png'), filename: 'zel3.png')

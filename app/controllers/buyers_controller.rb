@@ -5,13 +5,14 @@ class BuyersController < ApplicationController
   end
 
   def create
+    @product = Product.find(params[:product_id])
     @buyer_address = BuyerAddress.new(buyer_params)
     if @buyer_address.valid?
       pay_item
       @buyer_address.save
       redirect_to root_path
     else
-      render action: :new
+      render product_buyer_path(@product.id)
     end
   end
 

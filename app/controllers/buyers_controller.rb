@@ -12,7 +12,7 @@ class BuyersController < ApplicationController
       @buyer_address.save
       redirect_to root_path
     else
-      render product_buyer_path(@product.id)
+      render :index
     end
   end
 

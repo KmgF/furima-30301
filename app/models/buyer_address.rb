@@ -9,7 +9,7 @@ class BuyerAddress
     validates :prefecture_id, numericality: { other_than: 1, message: '都道府県を選択してください' }
     validates :city
     validates :house_number
-    validates :tel, numericality: true,length: {maximum: 11},exclusion: {in: %w(-) ,message:"ハイフンは入力しないでください"}
+    validates :tel, numericality: true,length: {maximum: 11}
     validates :token
   end
 

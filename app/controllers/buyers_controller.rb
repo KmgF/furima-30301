@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
+  before_action :sold_out ,only:[:index]
 
   def index
     @product = Product.find(params[:product_id])
@@ -18,6 +19,7 @@ class BuyersController < ApplicationController
     end
   end
 
+
 private
 def buyer_params
   params.require(:buyer_address).permit(:post_number,:prefecture_id,:city,:house_number,:building_name,:tel).merge(user_id: current_user.id, product_id: params[:product_id],token: params[:token])
@@ -31,5 +33,15 @@ def pay_item
     currency:'jpy'
   )
 end
+
+
+def sold_out
+  @product = Product.find(params[:product_id])
+  if Buyer.find_by(product_id: @product.id )
+  redirect_to root_path 
+  end
+end
+
+def 
 
 end

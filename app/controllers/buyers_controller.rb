@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
-  before_action :sold_out ,only:[:index]
+  before_action :sold_out
   before_action :this_is_saller
 
   def index

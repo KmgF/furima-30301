@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out ,only:[:index]
+  before_action :this_is_saller
 
   def index
     @product = Product.find(params[:product_id])
@@ -42,6 +43,11 @@ def sold_out
   end
 end
 
-def 
+def this_is_saller
+  @product = Product.find(params[:product_id])
+  if @product.user_id == current_user.id
+    redirect_to product_path(@product.id)
+  end
+end
 
 end

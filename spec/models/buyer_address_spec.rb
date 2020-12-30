@@ -18,6 +18,11 @@ RSpec.describe BuyerAddress, type: :model do
     end
 
     context '商品が購入できない時' do
+      it 'user_idが紐づいていないと保存できない'do
+        @buyer_address.user_id  = ''
+        @buyer_address.valid?
+        expect(@buyer_address.errors.messages).to include user_id: ["can't be blank"]
+      end
       it 'product_idが紐づいていないと保存できない' do
         @buyer_address.product_id = ''
         @buyer_address.valid?

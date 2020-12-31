@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product
   before_action :this_is_not_saller ,only: [:edit]
 
   def index

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :this_is_not_saller ,only: [:edit]
-  # before_action :sold_out
+  before_action :sold_out
 
   def index
     @products = Product.order('created_at DESC')

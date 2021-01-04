@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       redirect_to root_path
+    else
+      render :show
     end
   end
 

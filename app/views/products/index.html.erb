@@ -133,9 +133,11 @@
           <%= link_to image_tag(product.image.variant(resize:"300X300"), class: "item-img"),product_path(product.id) if product.image.attached? %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
-          <%# <div class='sold-out'>
+          <% if  Buyer.find_by(product_id: product.id)%>
+          <div class='sold-out'>
             <span>Sold Out!!</span>
-          </div> %>
+          </div> 
+          <% end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>

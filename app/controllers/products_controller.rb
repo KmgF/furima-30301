@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only:[:show,:edit,:update,:destroy]
   before_action :sold_out, only:[:edit]
 
-
+  
   def index
     @products = Product.order('created_at DESC')
   end

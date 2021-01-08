@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :this_is_not_saller ,only: [:edit]
-  before_action :sold_out
+  before_action :this_is_not_saller ,only: [:edit,:destroy]
+  before_action :set_product, only:[:show,:edit,:update,:destroy]
+  before_action :sold_out, only:[:edit]
+
 
   def index
     @products = Product.order('created_at DESC')
@@ -21,19 +23,24 @@ class ProductsController < ApplicationController
   end
 
   def show
-    set_product
   end
 
   def edit
-    set_product
   end
 
   def update
-    set_product
     if @product.update(product_params)
       redirect_to product_path(@product.id)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
@@ -54,10 +61,11 @@ class ProductsController < ApplicationController
     end 
   end
 
-  # def sold_out
-  #   set_product
-  #   if Buyer.find_by(product_id: @product.id)
-  #     redirect_to root_path
-  #   end
-  # end
+  def sold_out
+    set_product
+    if Buyer.find_by(product_id: @product.id)
+      redirect_to root_path
+    end
+  end
+
 end

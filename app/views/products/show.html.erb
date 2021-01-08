@@ -27,6 +27,7 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
    <% if user_signed_in?%>
+   <% unless  Buyer.find_by(product_id: @product.id)%>
       <% if current_user.id == @product.user_id%>
         <%= link_to '商品の編集', edit_product_path(@product.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
@@ -34,6 +35,7 @@
         <%# 商品が売れていない場合はこちらを表示しましょう %>
       <% else %>
         <%= link_to '購入画面に進む', product_buyers_path(@product.id) ,class:"item-red-btn"%>
+      <% end %>
       <% end %>
    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
